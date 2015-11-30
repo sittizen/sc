@@ -1,13 +1,67 @@
-{% load cms_tags sekizai_tags %}
-<html>
-  <head>
-      <title>{% page_attribute "page_title" %}</title>
-      {% render_block "css" %}
-  </head>
-  <body>
-      {% cms_toolbar %}
-      {% placeholder base_content %}
-      {% block base_content %}{% endblock %}
-      {% render_block "js" %}
-  </body>
+{% load cms_tags  %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9 ]><html class="ie9" lang="en"><![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><!--<![endif]-->
+<html lang="it">
+<head>
+    <title>{% page_attribute "page_title" %}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Seo Meta -->
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+
+    {% addtoblock "css" %}
+        <!-- Styles -->
+        <link href="{% static 'website/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'website/css/style.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'website/css/styles/icons.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'website/css/styles/animate.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'website/js/rs-plugin/css/settings.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'website/css/styles/responsive.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Marcellus" rel="stylesheet" type="text/css" />
+        <!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}" />
+    {% endaddtoblock %}
+    {% render_block "css" %}
+
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+    {% cms_toolbar %}
+    {% block base_content %}{% endblock %}
+
+    {% addtoblock "js" %}
+    <!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE" />
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script language="javascript" type="text/javascript" src="{% static 'website/js/excanvas.min.js' %}"></script>
+	<![endif]-->
+    <!-- Scripts -->
+	<script type="text/javascript" src="{% static 'website/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/rs-plugin/pluginsources/jquery.themepunch.plugins.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/theme20.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.prettyPhoto.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.flexslider-min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.knob.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.nicescroll.min.js' %}"></script>
+{#	<script type="text/javascript" src="{% static 'website/js/gmap3.js' %}"></script>#}
+	<script type="text/javascript" src="{% static 'website/js/twitter/jquery.tweet.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.easing.1.3.js' %}"></script>
+	<script type="text/javascript" src="{% static 'website/js/jquery.arbitrary-anchor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'website/js/custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'website/js/project.js' %}"></script>
+    {% endaddtoblock %}
+    {% render_block "js" %}
+
+    {% block extrascript %}{% endblock %}
+</body>
 </html>

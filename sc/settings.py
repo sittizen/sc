@@ -121,6 +121,9 @@ SITE_ID = 1
 
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'sc_statics')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'),
+)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'sc_media')
 MEDIA_URL = '/media/'
@@ -144,4 +147,5 @@ MIGRATION_MODULES = {
 
 CMS_TEMPLATES = (
     ('home.html', 'Home'),
+    ('expertise.html', 'Expertise'),
 )
