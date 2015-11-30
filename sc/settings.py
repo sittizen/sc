@@ -35,6 +35,16 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
 
+    'filer',
+    'easy_thumbnails',
+    'cmsplugin_filer_image',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'meta_mixin',
+    'djangocms_blog',
+
     'djangocms_file',
     'djangocms_flash',
     'djangocms_googlemap',
@@ -128,10 +138,6 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'sc_media')
 MEDIA_URL = '/media/'
 
-LANGUAGES = [
-    ('it', 'Italiano'),
-]
-
 MIGRATION_MODULES = {
     'djangocms_file': 'djangocms_file.migrations_django',
     'djangocms_flash': 'djangocms_flash.migrations_django',
@@ -145,7 +151,30 @@ MIGRATION_MODULES = {
     'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations',
 }
 
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+
+LANGUAGES = [
+    ('it', 'Italiano'),
+    #('en', 'English'),
+]
+
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'it', },
+    ),
+}
+
 CMS_TEMPLATES = (
     ('home.html', 'Home'),
     ('expertise.html', 'Expertise'),
 )
+
+

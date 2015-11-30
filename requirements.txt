@@ -20,4 +20,5 @@ djangocms-video
 djangocms-link
 djangocms-snippet
 djangocms-text-ckeditor
+djangocms-blog
 django-reversion<1.9
