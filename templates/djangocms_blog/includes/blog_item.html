@@ -1,26 +1,20 @@
-{% load i18n thumbnail cms_tags %}
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+{% load cms_tags %}
 
-<article id="post-{{ post.slug }}" class="post-item">
-    <header>
-        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        {% block blog_meta %}
-            {% include "djangocms_blog/includes/blog_meta.html" %}
-        {% endblock %}
-    </header>
-    {% if image and post.main_image %}
-    <div class="blog-visual">
+<li class="grid_6" id="post-{{ post.slug }}" data-type="3d">
+    <div class="hover-fx">
         {% thumbnail post.main_image post.thumbnail_options.size crop=post.thumbnail_options.crop upscale=post.thumbnail_options.upscale subject_location=post.main_image.subject_location as thumb %}
         <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+        <a class="fLeft" href="" target="_blank">
+            <span><i class="icon-link"></i></span>
+        </a>
+        <a class="fRight" href="{{ post.get_absolute_url }}">
+            <span><i class="icon-cogs"></i></span>
+        </a>
     </div>
-    {% endif %}
-    <div class="blog-lead">
-        {% if not TRUNCWORDS_COUNT %}
-            {% render_model post "abstract" %}
-        {% else %}
-            {% render_model post "abstract" "" "" 'truncatewords_html:TRUNCWORDS_COUNT'  %}
-        {% endif %}
+    <div class="detailes">
+        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
     </div>
-    <footer class="read-more">
-        <a href="{{ post.get_absolute_url }}">{% trans "read more" %} &raquo;</a>
-    </footer>
-</article>
+</li>

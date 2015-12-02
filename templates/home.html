@@ -99,7 +99,7 @@
                 <div class="row clearfix mbs animated" data-gen="fadeInUp">
 				<div class="action-simple">
 					<h2>Simone Cittadini</h2>
-					<h5>Sviluppo con python, javascript, asterisk</h5>
+					<h5>Appunti di sviluppo con python, javascript, asterisk</h5>
 				</div>
 			</div>
 
@@ -149,77 +149,10 @@
 				</div><!-- grid 3 -->
 			</div><!-- row -->
 
-
-            <div class="row clearfix mbs" id="portfolio">
-				<div class="grid_12">
-							<ul class="portfolio clearfix" style="height: 588px;">
-                                <li class="grid_6" data-id="id-5" data-type="3d">
-                                    <div class="hover-fx">
-                                        <img src="{% static 'website/images/projects/bookrepublic.jpg' %}" alt="#">
-                                        <a class="fLeft" href="http://www.bookrepublic.it" target="_blank"><span><i
-                                                class="icon-link"></i></span></a>
-                                        <a class="fRight" href=""><span><i
-                                                class="icon-cogs"></i></span></a>
-                                    </div>
-                                    <div class="detailes">
-                                        <h5><a href="#">BookRepublic</a></h5>
-                                    </div>
-                                </li>
-                                <li class="grid_6" data-id="id-1" data-type="3d">
-									<div class="hover-fx">
-										<img src="{% static 'website/images/projects/jetpark.jpg' %}" alt="#">
-										<a class="fLeft" href="http://www.kstore.it" target="_blank"><span><i class="icon-link"></i></span></a>
-										<a class="fRight" href=""><span><i class="icon-cogs"></i></span></a>
-									</div>
-									<div class="detailes">
-										<h5> <a href="">KStore</a> </h5>
-									</div>
-								</li>
-                                <li class="grid_6" data-id="id-2" data-type="digital">
-									<div class="hover-fx">
-										<img src="{% static 'website/images/projects/jetpark.jpg' %}" alt="#">
-										<a class="fLeft" href="http://www.jetpark-malpensa.it" target="_blank"><span><i class="icon-link"></i></span></a>
-                                        <a class="fRight" href=""><span><i
-                                                class="icon-cogs"></i></span></a>
-                                    </div>
-									<div class="detailes">
-										<h5> <a href="#">JetPark</a> </h5>
-									</div>
-								</li>
-                                <li class="grid_6" data-id="id-3" data-type="digital">
-									<div class="hover-fx">
-										<img src="{% static 'website/images/projects/pbx.jpg' %}" alt="#">
-										<a class="fLeft" href="http://37.59.48.102:1234" target="_blank"><span><i class="icon-link"></i></span></a>
-                                        <a class="fRight" href=""><span><i
-                                                class="icon-cogs"></i></span></a>
-                                    </div>
-									<div class="detailes">
-										<h5> <a href="#">PBX</a> </h5>
-									</div>
-								</li>
-
-                                <li class="grid_6" data-id="id-4" data-type="illustrator">
-									<div class="hover-fx">
-										<img src="{% static 'website/images/projects/cybergun.jpg' %}" alt="#">
-										<a class="fLeft" href="http://www.cybergun.it" target="_blank"><span><i class="icon-link"></i></span></a>
-                                        <a class="fRight" href=""><span><i
-                                                class="icon-cogs"></i></span></a>
-                                    </div>
-									<div class="detailes">
-										<h5> <a href="#">CyberGun</a> </h5>
-									</div>
-								</li>
-
-
-							</ul>
-
-				</div><!-- grid 12 -->
-			</div>
-
+            {% block post_list %}{% endblock %}
 
 		</div><!-- end page content -->
         {% endblock %}
-
 
 		<footer id="footer">
 			<div class="footer-last row mtf clearfix">

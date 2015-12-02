@@ -1,41 +1,176 @@
-{% extends "djangocms_blog/base.html" %}
-{% load i18n thumbnail %}{% spaceless %}
+{% extends "base.html" %}
+{% load cms_tags %}
+{% load static %}
 
-{% block canonical_url %}<link rel="canonical" href="{{ SITE.domain }}{{ view.get_view_url }}"/>{% endblock canonical_url %}
+{% block base_content %}
+    <div id="frame_">
+	    <div id="layout" class="full">
+		    <header id="header" class="header_v1">
+			    <div class="extrabox">
+				    <div class="row clearfix">
+					    <div class="extra-content">
+						    <div class="grid_7">
+							    <div id="map1" class="official-map"></div>
+						    </div><!-- grid 7 -->
 
-{% block content_blog %}
-<section class="blog-list">
-    {% block blog_title %}
-    <header>
-        <h2>
-        {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
-        {% elif archive_date %}{% trans "Archive" %} &ndash; {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
-        {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
-        {% elif category %}{% trans "Category" %} &ndash; {{ category }}{% endif %}
-        </h2>
-    </header>
-    {% endblock %}
-    {% for post in post_list %}
-        {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
-    {% empty %}
-    <p class="blog-empty">{% trans "No article found." %}</p>
-    {% endfor %}
-    {% if author or archive_date or tagged_entries %}
-    <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
-    {% endif %}
-    {% if is_paginated %}
-    <nav class="{% firstof css_grid instance.css_grid %} pagination">
-        {% if page_obj.has_previous %}
-            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&laquo; {% trans "previous" %}</a>
-        {% endif %}
-        <span class="current">
-            {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
-        </span>
-        {% if page_obj.has_next %}
-            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a>
-        {% endif %}
-    </nav>
-    {% endif %}
-</section>
+                            <div class="grid_5">
+                                <h3 class="col-title"> Contattami </h3><span class="liner"></span>
+                                <div class="widget-content">
+                                    <form method="post" id="contactForm-widget" action="">
+                                        <div class="clearfix">
+                                            <div class="grid_6 alpha fll"><input type="text" name="senderName" id="senderName" placeholder="Nome *" class="requiredField" /></div>
+                                            <div class="grid_6 omega flr"><input type="text" name="senderEmail" id="senderEmail" placeholder="Indirizzo Email *" class="requiredField email" /></div>
+                                        </div>
+                                        <div>
+                                            <textarea name="message" id="message" placeholder="Testo *" class="requiredField" rows="6"></textarea>
+                                        </div>
+                                        <input type="submit" id="sendMessage" name="sendMessage" value="Invia" />
+                                        <span></span>
+                                    </form><!-- end form -->
+							    </div><!-- widget content -->
+						    </div><!-- grid 5 -->
+					    </div><!-- extra content -->
+					    <div class="arrow-down"><i class="icon-angle-down"></i></div>
+				    </div><!-- row clearfix -->
+			    </div>	<!-- end extrabox -->
+
+                <div class="head" style="max-height: 90px;">
+				    <div class="row clearfix">
+{#					    <div class="logo">#}
+{#						    <a href="/" title="simone cittadini"><img src="{% static 'website/images/logo.png' %}" alt="simone cittadini"></a>#}
+{#					    </div><!-- end logo -->#}
+
+                        <div class="social social-head">
+                            <a href="http://www.linkedin.com/in/scittadini" target="_blank" class="toptip" title="Linkedin"><i class="icon-linkedin"></i></a>
+                            <a href="https://github.com/sittizen" target="_blank" class="toptip" title="Github"><i class="icon-github"></i></a>
+					    </div><!-- end social -->
+
+					    <div class="info">
+						    <a href="mailto:simone@sig-c.com"><span><i class="icon-envelope-alt"></i>   simone@sig-c.com</span></a>
+					    </div><!-- end info -->
+				    </div><!-- row -->
+			    </div><!-- head -->
+
+			    <div class="headdown">
+				    <div class="row clearfix">
+					    <nav>
+						    <ul class="sf-menu">
+							    <li class="current selectedLava"><a href="/#home">Home</a></li>
+							    <li><a href="#portfolio">Blog</a></li>
+						    </ul>
+					    </nav><!-- nav -->
+				    </div><!-- row clearfix -->
+			    </div><!-- headdown -->
+		    </header><!-- header -->
+
+            {% block content %}
+			<div class="sliderr">
+                <div class="fullwidthbanner-container">
+                    <div class="revolution">
+                        <ul>
+                            <li data-transition="random" data-slotamount="7" data-masterspeed="300" >
+								<img src="{% static 'website/images/slides/bg1.jpg' %}" alt="bg11" data-fullwidthcentering="true">
+
+								<div class="tp-caption lfb"
+									 data-x="276"
+									 data-y="162"
+									 data-speed="400"
+									 data-start="1000"
+									 data-easing="easeOutExpo"  >
+                                    <img src="{% static 'website/images/slides/hand1.png' %}" alt="Image 1">
+                                </div>
+
+								<div class="tp-caption sfr"
+									 data-x="159"
+									 data-y="205"
+									 data-speed="500"
+									 data-start="1500"
+									 data-easing="easeInOutExpo"  >
+                                    <img src="{% static 'website/images/slides/slide1-cap1.png' %}" alt="Image 2">
+                                </div>
+							</li><!-- End Slide -->
+						</ul><!-- End Slides -->
+						<div class="tp-bannertimer"></div><!-- Timer -->
+					</div>
+				</div>
+			</div>
+
+		    <div class="page-content" id="home">
+                <div class="row clearfix mbs animated" data-gen="fadeInUp">
+				<div class="action-simple">
+					<h2>Simone Cittadini</h2>
+					<h5>Appunti di sviluppo con python, javascript, asterisk</h5>
+				</div>
+			</div>
+
+			<div class="row services mbs clearfix">
+				<div class="grid_3 animated" data-gen="fadeInLeft">
+					<div class="stitle mb clearfix">
+						<i class="service-icon icons-check"></i>
+						<h4> appunti di sviluppo<small>continuous integration ...</small> </h4>
+					</div>
+                    <div style="min-height: 132px;">
+                        {% placeholder 'content_box_sviluppo_text' %}
+                    </div>
+                    <a href="/sviluppo/" class="tbutton small"><span>Leggi<i class="mii icon-angle-right"></i></span></a>
+				</div><!-- grid 3 -->
+
+				<div class="grid_3 animated" data-gen="fadeInUp">
+					<div class="stitle mb clearfix">
+						<i class="service-icon icons-wireframe-globe"></i>
+						<h4> python, javascript<small>cms, web-apps, e-commerce ...</small> </h4>
+					</div>
+                    <div style="min-height: 132px;">
+                        {% placeholder 'content_box_linguaggi_text' %}
+                    </div>
+                    <a href="/linguaggi/" class="tbutton small"><span>Leggi<i class="mii icon-angle-right"></i></span></a>
+				</div><!-- grid 3 -->
+
+				<div class="grid_3 animated" data-gen="fadeInUp">
+					<div class="stitle mb clearfix">
+						<i class="service-icon icons-telephone"></i>
+						<h4> Asterisk <small>pbx, voip, wholesale ...</small> </h4>
+					</div>
+                    <div style="min-height: 132px;">
+                        {% placeholder 'content_box_asterisk_text' %}
+	                </div>
+					<a href="/asterisk/" class="tbutton small"><span>Leggi<i class="mii icon-angle-right"></i></span></a>
+				</div><!-- grid 3 -->
+
+				<div class="grid_3 animated" data-gen="fadeInRight">
+					<div class="stitle mb clearfix">
+						<i class="service-icon icons-sliders-vertical"></i>
+						<h4>e ...<small>webservices integration ...</small> </h4>
+					</div>
+                    <div style="min-height: 132px;">
+                        {% placeholder 'content_box_altro_text' %}
+					</div>
+                    <a href="/e/" class="tbutton small"><span>Leggi<i class="mii icon-angle-right"></i></span></a>
+				</div><!-- grid 3 -->
+			</div><!-- row -->
+
+            {% block post_list %}
+            <div class="row clearfix mbs" id="portfolio">
+				<div class="grid_12">
+                    <ul class="portfolio clearfix" style="height: 588px;">
+                        {% for post in post_list %}
+                            {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+                        {% endfor %}
+                    </ul>
+				</div><!-- grid 12 -->
+			</div>
+            {% endblock %}
+
+		</div><!-- end page content -->
+        {% endblock %}
+
+		<footer id="footer">
+			<div class="footer-last row mtf clearfix">
+				<span class="copyright">© Simone Cittadini.</span>
+			</div><!-- end last footer -->
+		</footer><!-- end footer -->
+	</div><!-- end layout -->
+	</div><!-- end frame -->
+
+<div id="toTop"><i class="icon-angle-up"></i></div><!-- Back to top -->
 {% endblock %}
-{% endspaceless %}
