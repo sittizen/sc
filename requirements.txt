@@ -24,3 +24,4 @@ djangocms-blog
 django-reversion<1.9
 django_debug_toolbar<1.5
 django-debug-toolbar-template-timings<0.7
+django-toolbelt

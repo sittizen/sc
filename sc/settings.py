@@ -12,10 +12,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e6ka^_tqexj_9bq)iu$-k2@^5phwet7yoj+nd-@cob(&30_^8k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not False
 
-ALLOWED_HOSTS = []
-
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,14 +38,14 @@ INSTALLED_APPS = (
     'template_timings_panel',
     'filer',
     'easy_thumbnails',
-    'cmsplugin_filer_image',
     'parler',
     'taggit',
     'taggit_autosuggest',
     'meta',
     'meta_mixin',
-    'djangocms_blog',
 
+    'cmsplugin_filer_image',
+    'djangocms_blog',
     'djangocms_file',
     'djangocms_flash',
     'djangocms_googlemap',
@@ -105,13 +105,23 @@ WSGI_APPLICATION = 'sc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# Heroku
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default':  dj_database_url.config()
 }
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -148,10 +158,11 @@ DEBUG_TOOLBAR_PANELS = [
 
 SITE_ID = 1
 
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'sc_statics')
+STATIC_ROOT = 'staticfiles'  # os.path.join(BASE_DIR, '..', 'sc_statics')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'static'),
+    #os.path.join(BASE_DIR, 'assets'),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'sc_media')
