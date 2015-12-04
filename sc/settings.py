@@ -59,8 +59,8 @@ INSTALLED_APPS = (
     'djangocms_blog',
 
     # keep commented with first and second migrate
-    'debug_toolbar',
-    'template_timings_panel',
+    # 'debug_toolbar',
+    # 'template_timings_panel',
 )
 
 MIDDLEWARE_CLASSES = (
