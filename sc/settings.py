@@ -44,19 +44,19 @@ INSTALLED_APPS = (
 
     'cms',
 
-    # # keep commented with first migrate
-    # 'cmsplugin_filer_image',
-    # 'djangocms_file',
-    # 'djangocms_flash',
-    # 'djangocms_googlemap',
-    # 'djangocms_inherit',
-    # 'djangocms_picture',
-    # 'djangocms_teaser',
-    # 'djangocms_video',
-    # 'djangocms_link',
-    # 'djangocms_snippet',
-    # 'djangocms_text_ckeditor',
-    # 'djangocms_blog',
+    # keep commented with first migrate
+    'cmsplugin_filer_image',
+    'djangocms_file',
+    'djangocms_flash',
+    'djangocms_googlemap',
+    'djangocms_inherit',
+    'djangocms_picture',
+    'djangocms_teaser',
+    'djangocms_video',
+    'djangocms_link',
+    'djangocms_snippet',
+    'djangocms_text_ckeditor',
+    'djangocms_blog',
     #
     # # keep commented with first and second migrate
     # 'debug_toolbar',
