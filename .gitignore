@@ -51,6 +51,9 @@ coverage.xml
 *.log
 staticfiles
 
+# virtualenv
+.project
+
 # Sphinx documentation
 docs/_build/
 

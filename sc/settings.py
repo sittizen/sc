@@ -115,6 +115,7 @@ WSGI_APPLICATION = 'sc.wsgi.application'
 # Heroku
 
 # Parse database configuration from $DATABASE_URL
+# export DATABASE_URL=postgres://sc:sc@localhost/sc
 import dj_database_url
 DATABASES = {
     'default':  dj_database_url.config()
