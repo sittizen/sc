@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e6ka^_tqexj_9bq)iu$-k2@^5phwet7yoj+nd-@cob(&30_^8k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not False
+DEBUG = False
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
@@ -20,7 +20,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    # ! need to migrate three times, some dependency in django cms plugins seems to be currently (12-2015) broken
+    # ! need to migrate two times,
+    # some dependency in django cms plugins seems to be currently (12-2015) broken / have strange behavior
+    # with debug_toolbar enabled
     'djangocms_admin_style',
 
     'django.contrib.admin',
@@ -41,27 +43,36 @@ INSTALLED_APPS = (
     'taggit_autosuggest',
     'meta',
     'meta_mixin',
+    'debug_toolbar',
+    'template_timings_panel',
 
     'cms',
 
-    # keep commented with first migrate
-    'cmsplugin_filer_image',
-    'djangocms_file',
-    'djangocms_flash',
-    'djangocms_googlemap',
-    'djangocms_inherit',
-    'djangocms_picture',
-    'djangocms_teaser',
-    'djangocms_video',
     'djangocms_link',
-    'djangocms_snippet',
     'djangocms_text_ckeditor',
-    'djangocms_blog',
-
-    # keep commented with first and second migrate
-    # 'debug_toolbar',
-    # 'template_timings_panel',
+    # keep commented with first migrate
+    # 'cmsplugin_filer_image',
+    # 'djangocms_file',
+    # 'djangocms_googlemap',
+    # 'djangocms_inherit',
+    # 'djangocms_picture',
+    # 'djangocms_teaser',
+    # 'djangocms_video',
+    # 'djangocms_snippet',
+    # 'djangocms_blog',
 )
+
+MIGRATION_MODULES = {
+    'djangocms_file': 'djangocms_file.migrations_django',
+    'djangocms_googlemap': 'djangocms_googlemap.migrations_django',
+    'djangocms_inherit': 'djangocms_inherit.migrations_django',
+    'djangocms_link': 'djangocms_link.migrations',
+    'djangocms_picture': 'djangocms_picture.migrations_django',
+    'djangocms_snippet': 'djangocms_snippet.migrations_django',
+    'djangocms_teaser': 'djangocms_teaser.migrations_django',
+    'djangocms_video': 'djangocms_video.migrations_django',
+    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations',
+}
 
 MIDDLEWARE_CLASSES = (
     'cms.middleware.utils.ApphookReloadMiddleware',
@@ -175,19 +186,6 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'sc_media')
 MEDIA_URL = '/media/'
-
-MIGRATION_MODULES = {
-    'djangocms_file': 'djangocms_file.migrations_django',
-    'djangocms_flash': 'djangocms_flash.migrations_django',
-    'djangocms_googlemap': 'djangocms_googlemap.migrations_django',
-    'djangocms_inherit': 'djangocms_inherit.migrations_django',
-    'djangocms_link': 'djangocms_link.migrations',
-    'djangocms_picture': 'djangocms_picture.migrations_django',
-    'djangocms_snippet': 'djangocms_snippet.migrations_django',
-    'djangocms_teaser': 'djangocms_teaser.migrations_django',
-    'djangocms_video': 'djangocms_video.migrations_django',
-    'djangocms_text_ckeditor': 'djangocms_text_ckeditor.migrations',
-}
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
