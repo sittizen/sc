@@ -51,15 +51,15 @@ INSTALLED_APPS = (
     'djangocms_link',
     'djangocms_text_ckeditor',
     # keep commented with first migrate
-    # 'cmsplugin_filer_image',
-    # 'djangocms_file',
-    # 'djangocms_googlemap',
-    # 'djangocms_inherit',
-    # 'djangocms_picture',
-    # 'djangocms_teaser',
-    # 'djangocms_video',
-    # 'djangocms_snippet',
-    # 'djangocms_blog',
+    'cmsplugin_filer_image',
+    'djangocms_file',
+    'djangocms_googlemap',
+    'djangocms_inherit',
+    'djangocms_picture',
+    'djangocms_teaser',
+    'djangocms_video',
+    'djangocms_snippet',
+    'djangocms_blog',
 )
 
 MIGRATION_MODULES = {
