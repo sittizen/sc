@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
+    # ! need to migrate three times, some dependency in django cms plugins seems to be currently (12-2015) broken
     'djangocms_admin_style',
 
     'django.contrib.admin',
@@ -30,12 +31,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'cms',
     'treebeard',
     'menus',
     'sekizai',
-    'debug_toolbar',
-    'template_timings_panel',
     'filer',
     'easy_thumbnails',
     'parler',
@@ -44,18 +42,25 @@ INSTALLED_APPS = (
     'meta',
     'meta_mixin',
 
-    'cmsplugin_filer_image',
-    'djangocms_blog',
-    'djangocms_file',
-    'djangocms_flash',
-    'djangocms_googlemap',
-    'djangocms_inherit',
-    'djangocms_picture',
-    'djangocms_teaser',
-    'djangocms_video',
-    'djangocms_link',
-    'djangocms_snippet',
-    'djangocms_text_ckeditor',
+    'cms',
+
+    # # keep commented with first migrate
+    # 'cmsplugin_filer_image',
+    # 'djangocms_file',
+    # 'djangocms_flash',
+    # 'djangocms_googlemap',
+    # 'djangocms_inherit',
+    # 'djangocms_picture',
+    # 'djangocms_teaser',
+    # 'djangocms_video',
+    # 'djangocms_link',
+    # 'djangocms_snippet',
+    # 'djangocms_text_ckeditor',
+    # 'djangocms_blog',
+    #
+    # # keep commented with first and second migrate
+    # 'debug_toolbar',
+    # 'template_timings_panel',
 )
 
 MIDDLEWARE_CLASSES = (
