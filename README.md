@@ -17,7 +17,7 @@ Locally (after cloning, from inside project root, with a postgres server ready):
     export DATABASE_URL=postgres://sc:sc@localhost/sc
     ./manage.py migrate
 
-On Heroku (after having installed locally, from inside project root):
+On Heroku (after having installed locally, from inside project root, with heroku toolbelt installed):
 
     heroku create
     git push heroku master
